@@ -6,6 +6,7 @@ part 'pomodoro.store.g.dart';
 
 class PomodoroStore = _PomodoroStore with _$PomodoroStore;
 
+
 enum TipoIntervalo { trabalho, descanso }
 
 abstract class _PomodoroStore with Store {
@@ -29,6 +30,18 @@ abstract class _PomodoroStore with Store {
 
   Timer? cronometro;
 
+  @observable
+  int minutosMeta = 25; // Valor padrão da meta em minutos
+
+  @observable
+  int segundosMeta = 0; // Valor padrão da meta em segundos
+
+  @observable
+  bool concluido = false; // Indica se a meta foi concluída
+
+  @observable
+  int tempoMeta = 25;
+
   @action
   void iniciar() {
     iniciado = true;
@@ -40,6 +53,14 @@ abstract class _PomodoroStore with Store {
         minutos--;
       } else {
         segundos--;
+      }
+       if (minutosMeta == 0 && segundosMeta == 0) {
+        marcarConcluido();
+      }else if (segundosMeta==0){
+        segundosMeta = 59;
+        minutosMeta--;
+      }else{
+        segundosMeta--;
       }
     });
   }
@@ -57,6 +78,14 @@ abstract class _PomodoroStore with Store {
     segundos = 0;
   }
 
+    @action
+  void reiniciarMeta() {
+    parar();
+    minutosMeta = tempoMeta;
+    segundosMeta = 0;
+    concluido = false;
+  }
+
   @action
   void incrementarTempoTrabalho() {
     tempoTrabalho++;
@@ -72,6 +101,20 @@ abstract class _PomodoroStore with Store {
       if (estaTrabalhando()) {
         reiniciar();
       }
+    }
+  }
+
+    @action
+  void incrementarMeta() {
+    tempoMeta++;
+      reiniciarMeta();
+  }
+
+  @action
+  void decrementarMeta() {
+    if (tempoMeta > 1) {
+      tempoMeta--;
+        reiniciarMeta();
     }
   }
 
@@ -111,4 +154,11 @@ abstract class _PomodoroStore with Store {
     }
     segundos = 0;
   }
+
+
+  @action
+  void marcarConcluido() {
+    concluido = true;
+  }
+
 }

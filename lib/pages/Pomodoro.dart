@@ -16,39 +16,62 @@ class Pomodoro extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const Expanded(
+          Expanded(
             child: Cronometro(),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 40),
             child: Observer(
-              builder: (_) => Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  EntradaTempo(
-                    titulo: 'Trabalho',
-                    valor: store.tempoTrabalho,
-                    inc: store.iniciado && store.estaTrabalhando()
-                        ? null
-                        : store.incrementarTempoTrabalho,
-                    dec: store.iniciado && store.estaTrabalhando()
-                        ? null
-                        : store.decrementarTempoTrabalho,
-                  ),
-                  EntradaTempo(
-                    titulo: 'Descanso',
-                    valor: store.tempoDescanso,
-                    inc: store.iniciado && store.estaDescansando()
-                        ? null
-                        : store.incrementarTempoDescanso,
-                    dec: store.iniciado && store.estaDescansando()
-                        ? null
-                        : store.decrementarTempoDescanso,
-                  ),
-                ],
-              ),
+              builder: (_) {
+                return Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        EntradaTempo(
+                          titulo: 'Trabalho',
+                          valor: store.tempoTrabalho,
+                          inc: store.iniciado && store.estaTrabalhando()
+                              ? null
+                              : store.incrementarTempoTrabalho,
+                          dec: store.iniciado && store.estaTrabalhando()
+                              ? null
+                              : store.decrementarTempoTrabalho,
+                        ),
+                        EntradaTempo(
+                          titulo: 'Descanso',
+                          valor: store.tempoDescanso,
+                          inc: store.iniciado && store.estaDescansando()
+                              ? null
+                              : store.incrementarTempoDescanso,
+                          dec: store.iniciado && store.estaDescansando()
+                              ? null
+                              : store.decrementarTempoDescanso,
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 20), // Espaçamento
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        EntradaTempo(
+                          titulo: 'Meta',
+                          valor: store.tempoMeta,
+                          inc: store.iniciado
+                              ? null
+                              : store.incrementarMeta,
+                          dec: store.iniciado 
+                              ? null
+                              : store.decrementarMeta,
+                        ),
+                      ],
+                    ),
+                  ],
+                );
+              },
             ),
           ),
+
         ],
       ),
     );

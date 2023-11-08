@@ -105,6 +105,70 @@ mixin _$PomodoroStore on _PomodoroStore, Store {
     });
   }
 
+  late final _$minutosMetaAtom =
+      Atom(name: '_PomodoroStore.minutosMeta', context: context);
+
+  @override
+  int get minutosMeta {
+    _$minutosMetaAtom.reportRead();
+    return super.minutosMeta;
+  }
+
+  @override
+  set minutosMeta(int value) {
+    _$minutosMetaAtom.reportWrite(value, super.minutosMeta, () {
+      super.minutosMeta = value;
+    });
+  }
+
+  late final _$segundosMetaAtom =
+      Atom(name: '_PomodoroStore.segundosMeta', context: context);
+
+  @override
+  int get segundosMeta {
+    _$segundosMetaAtom.reportRead();
+    return super.segundosMeta;
+  }
+
+  @override
+  set segundosMeta(int value) {
+    _$segundosMetaAtom.reportWrite(value, super.segundosMeta, () {
+      super.segundosMeta = value;
+    });
+  }
+
+  late final _$concluidoAtom =
+      Atom(name: '_PomodoroStore.concluido', context: context);
+
+  @override
+  bool get concluido {
+    _$concluidoAtom.reportRead();
+    return super.concluido;
+  }
+
+  @override
+  set concluido(bool value) {
+    _$concluidoAtom.reportWrite(value, super.concluido, () {
+      super.concluido = value;
+    });
+  }
+
+  late final _$tempoMetaAtom =
+      Atom(name: '_PomodoroStore.tempoMeta', context: context);
+
+  @override
+  int get tempoMeta {
+    _$tempoMetaAtom.reportRead();
+    return super.tempoMeta;
+  }
+
+  @override
+  set tempoMeta(int value) {
+    _$tempoMetaAtom.reportWrite(value, super.tempoMeta, () {
+      super.tempoMeta = value;
+    });
+  }
+
   late final _$_PomodoroStoreActionController =
       ActionController(name: '_PomodoroStore', context: context);
 
@@ -142,6 +206,17 @@ mixin _$PomodoroStore on _PomodoroStore, Store {
   }
 
   @override
+  void reiniciarMeta() {
+    final _$actionInfo = _$_PomodoroStoreActionController.startAction(
+        name: '_PomodoroStore.reiniciarMeta');
+    try {
+      return super.reiniciarMeta();
+    } finally {
+      _$_PomodoroStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void incrementarTempoTrabalho() {
     final _$actionInfo = _$_PomodoroStoreActionController.startAction(
         name: '_PomodoroStore.incrementarTempoTrabalho');
@@ -158,6 +233,28 @@ mixin _$PomodoroStore on _PomodoroStore, Store {
         name: '_PomodoroStore.decrementarTempoTrabalho');
     try {
       return super.decrementarTempoTrabalho();
+    } finally {
+      _$_PomodoroStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void incrementarMeta() {
+    final _$actionInfo = _$_PomodoroStoreActionController.startAction(
+        name: '_PomodoroStore.incrementarMeta');
+    try {
+      return super.incrementarMeta();
+    } finally {
+      _$_PomodoroStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void decrementarMeta() {
+    final _$actionInfo = _$_PomodoroStoreActionController.startAction(
+        name: '_PomodoroStore.decrementarMeta');
+    try {
+      return super.decrementarMeta();
     } finally {
       _$_PomodoroStoreActionController.endAction(_$actionInfo);
     }
@@ -186,6 +283,17 @@ mixin _$PomodoroStore on _PomodoroStore, Store {
   }
 
   @override
+  void marcarConcluido() {
+    final _$actionInfo = _$_PomodoroStoreActionController.startAction(
+        name: '_PomodoroStore.marcarConcluido');
+    try {
+      return super.marcarConcluido();
+    } finally {
+      _$_PomodoroStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 iniciado: ${iniciado},
@@ -193,7 +301,11 @@ minutos: ${minutos},
 segundos: ${segundos},
 tempoTrabalho: ${tempoTrabalho},
 tempoDescanso: ${tempoDescanso},
-tipoIntervalo: ${tipoIntervalo}
+tipoIntervalo: ${tipoIntervalo},
+minutosMeta: ${minutosMeta},
+segundosMeta: ${segundosMeta},
+concluido: ${concluido},
+tempoMeta: ${tempoMeta}
     ''';
   }
 }
