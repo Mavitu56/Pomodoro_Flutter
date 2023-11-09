@@ -75,7 +75,7 @@ class Pomodoro extends StatelessWidget {
                         AuthService().logout();
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.red, // Cor de fundo do botão
+                        primary: Colors.black, // Cor de fundo do botão
                       ),
                       child: Text('Sair'),
                     ),
