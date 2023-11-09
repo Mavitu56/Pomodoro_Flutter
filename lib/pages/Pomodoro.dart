@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:pomodoro/components/Cronometro.dart';
 import 'package:pomodoro/components/EntradaTempo.dart';
 import 'package:provider/provider.dart';
+import 'package:pomodoro/core/services/auth/auth_service.dart';
 import '../store/pomodoro.store.dart';
 
 class Pomodoro extends StatelessWidget {
@@ -60,18 +61,27 @@ class Pomodoro extends StatelessWidget {
                           inc: store.iniciado
                               ? null
                               : store.incrementarMeta,
-                          dec: store.iniciado 
+                          dec: store.iniciado
                               ? null
                               : store.decrementarMeta,
                         ),
                       ],
+                    ),
+                    SizedBox(height: 20), // Espaçamento
+                    ElevatedButton(
+                      onPressed: () {
+                        AuthService().logout();
+                      },
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.red, // Cor de fundo do botão
+                      ),
+                      child: Text('Sair'),
                     ),
                   ],
                 );
               },
             ),
           ),
-
         ],
       ),
     );

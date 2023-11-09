@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pomodoro/pages/Pomodoro.dart';
+import 'package:pomodoro/pages/auth_or_app_page.dart';
 import 'package:provider/provider.dart';
 import './store/pomodoro.store.dart';
 
@@ -21,9 +21,9 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.red,
         ),
-        home: const Pomodoro(),
+        home: const AuthOrAppPage(),
       ),
     );
   }
