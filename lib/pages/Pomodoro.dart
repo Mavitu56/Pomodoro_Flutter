@@ -14,6 +14,8 @@ class Pomodoro extends StatelessWidget {
     final store = Provider.of<PomodoroStore>(context);
 
     return Scaffold(
+  resizeToAvoidBottomInset: true,
+
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -67,7 +69,7 @@ class Pomodoro extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: 20), // Espaçamento
+                    SizedBox(height: 5), // Espaçamento
                     ElevatedButton(
                       onPressed: () {
                         AuthService().logout();

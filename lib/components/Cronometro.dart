@@ -18,6 +18,8 @@ class Cronometro extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+
+          SizedBox(height: 30), 
           Container(
             width: 150,
             height: 75,
@@ -52,24 +54,24 @@ class Cronometro extends StatelessWidget {
                     color: Colors.white,
                     size: 48,
                   ),
-          SizedBox(height: 20), // Espaçamento
+          SizedBox(height: 5), // Espaçamento
           
           Text(
             store.estaTrabalhando() ? 'Período de foco' : 'Período de descanso',
             style: const TextStyle(
-              fontSize: 40,
+              fontSize: 35,
               color: Colors.white,
             ),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 5),
           Text(
             '${store.minutos.toString().padLeft(2, '0')}:${store.segundos.toString().padLeft(2, '0')}',
             style: const TextStyle(
-              fontSize: 120,
+              fontSize: 85,
               color: Colors.white,
             ),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

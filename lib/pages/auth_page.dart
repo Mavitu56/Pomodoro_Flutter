@@ -49,7 +49,7 @@ class _AuthPageState extends State<AuthPage> {
           children: [
             Container(
               width: double.infinity,
-              height: 200,
+              height: 100,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('images/pomodoro.png'),

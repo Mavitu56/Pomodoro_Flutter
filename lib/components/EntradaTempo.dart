@@ -26,18 +26,17 @@ class EntradaTempo extends StatelessWidget {
         Text(
           titulo,
           style: const TextStyle(
-            fontSize: 25,
+            fontSize: 23,
           ),
         ),
-        const SizedBox(height: 10),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
               onPressed: dec,
               style: ElevatedButton.styleFrom(
-                shape: const CircleBorder(),
-                padding: const EdgeInsets.all(15),
+                shape:  CircleBorder(),
+                padding: const EdgeInsets.all(7),
                 backgroundColor:
                     store.estaTrabalhando() ? Colors.red : Colors.green,
               ),
@@ -56,7 +55,7 @@ class EntradaTempo extends StatelessWidget {
               onPressed: inc,
               style: ElevatedButton.styleFrom(
                 shape: const CircleBorder(),
-                padding: const EdgeInsets.all(15),
+                padding: const EdgeInsets.all(7),
                 backgroundColor:
                     store.estaTrabalhando() ? Colors.red : Colors.green,
               ),

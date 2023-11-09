@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pomodoro/pages/auth_or_app_page.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter/foundation.dart';
 import './store/pomodoro.store.dart';
 
 void main() {
